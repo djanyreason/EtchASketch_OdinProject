@@ -1,0 +1,29 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+
+#etchFrame {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 8px outset grey;
+  border-radius: 8px;
+  margin: 48px;
+}
+
+.etchRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1 auto;
+}
+
+.etchBox {
+  height: 14px;
+  width: 14px;
+  border: 1px solid black;
+  flex: 1 1 auto;
+}
