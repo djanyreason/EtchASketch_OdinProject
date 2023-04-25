@@ -19,11 +19,6 @@ body {
   justify-content: center;
   align-items: center;
   flex: 1 1 auto;
-  border-right: 1px solid black;
-}
-
-.topRow {
-  border-top: 1px solid black;
 }
 
 .etchBox {
