@@ -1,3 +1,11 @@
+//Recursively removes all descendents of parameter node
+function clearChildren(node) {
+  while (node.childNodes.length > 0) {
+    clearChildren(node.childNodes[0]);
+    node.removeChild(node.childNodes[0]);
+  }
+}
+
 //Builds an Etch-a-Sketch in the HTML of grid size dimension x dimension, with
 //the total Etch-a-Sketch size being 513px x 513px
 //Takes one parameter: dimension, which should be an integer, and is max 100
@@ -5,6 +13,7 @@ function buildEAS(dimension) {
   if(dimension > 100) return buildEAS(100);
 
   const frame = document.getElementById("etchFrame");
+  clearChildren(frame); //reset the Etch Frame
 
   //Define the size of each square in the Etch a Sketch so the total size of
   //all boxes is as close to 513px as possible without going over; uses 512
