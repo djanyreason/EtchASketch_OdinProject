@@ -54,4 +54,13 @@ function buildEAS(dimension) {
   }
 }
 
+function resetButton() {
+  const gridSize = parseInt(prompt("Enter an integer from 1-100 for the size of the new Etch-a-Sketch"));
+
+  if(isNaN(gridSize)) return alert("Error: Invalid Entry");
+  else if (gridSize < 0) return alert("Error: Entry must be positive");
+  else if (gridSize > 100) return alert ("Error: Entry must be less than or equal to 100");
+  else buildEAS(gridSize);
+}
+
 buildEAS(16); //start with a 16x16 grid
