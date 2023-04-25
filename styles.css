@@ -19,11 +19,18 @@ body {
   justify-content: center;
   align-items: center;
   flex: 1 1 auto;
+  border-right: 1px solid black;
+}
+
+.topRow {
+  border-top: 1px solid black;
 }
 
 .etchBox {
-  height: 14px;
-  width: 14px;
+/*  height: 14px;
+  width: 14px; */
   border: 1px solid black;
+  border-right-width: 0px;
+  border-top-width: 0px;
   flex: 1 1 auto;
 }
