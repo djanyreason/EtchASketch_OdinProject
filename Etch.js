@@ -4,10 +4,12 @@ function buildEAS(dimension) {
  const frame = document.getElementById("etchFrame");
 
  //Define the size of each square in the Etch a Sketch so the total size is as
- //close to 512px as possible without going over; remove 1px extra for border
+ //close to 512px as possible without going over; minimum size of 2px is 
+ //enforced for aesthetic purposes (this can cause box to exceed 512px); 1px is
+ //subtracted to account for the 1px border
  const boxSize = ((dimension * Math.round(512 / dimension)) <= 512) ? 
-                 (Math.round(512 / dimension) - 1) : 
-                 (Math.round(512 / dimension) - 2);
+                 Math.max((Math.round(512 / dimension) - 1),2) : 
+                 Math.max((Math.round(512 / dimension) - 2),2);
 
  for(let i = 0; i < dimension; i++) { // for loop to add rows to frame
   const row = document.createElement("div");
