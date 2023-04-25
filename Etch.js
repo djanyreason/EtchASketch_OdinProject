@@ -6,6 +6,49 @@ function clearChildren(node) {
   }
 }
 
+//Helper function to recursively convert an integer - dec - into a Hex string
+function dec2hex(dec) {
+  if(dec >= 16) return dec2hex(Math.floor(dec / 16)) + dec2hex(dec % 16);
+  switch(dec) {
+    case 15:
+      return "F";
+      break;
+    case 14:
+      return "E";
+      break;
+    case 13:
+      return "D";
+      break;
+    case 12:
+      return "C";
+      break;
+    case 11:
+      return "B";
+      break;
+    case 10:
+      return "A";
+      break;
+    default:
+      return "" + dec;
+  }
+
+  return "" + dec;
+}
+
+//Takes a RGB formatted color and returns a string that is a HEX RGB formatted
+//shade of gray 26 RGB units closer to black than the Red value of the input
+//Parameter color - a string of the format "rgb(r, g, b)"
+function shade(color) {
+  const currShade = parseInt(color.substring(4,7));
+  //Regardless of how many digits in the r value, this will always parse to its
+  //value correctly
+
+  const newShade = ((currShade < 16) ? "0" : "") + //Add a leading 0 if needed
+                   dec2hex(Math.max(0, currShade - 26));
+  
+  return "#" + newShade + newShade + newShade; //return hex RGB format string
+}
+
 //Builds an Etch-a-Sketch in the HTML of grid size dimension x dimension, with
 //the total Etch-a-Sketch size being 513px x 513px
 //Takes one parameter: dimension, which should be an integer, and is max 100
@@ -42,10 +85,11 @@ function buildEAS(dimension) {
       box.className = "etchBox";
       box.style.height = boxSize + "px";
       box.style.width = boxSize + "px";
+      box.style.backgroundColor = "#FFFFFF"
 
       // Add drawing/Etch-a-Sketching functionality
       box.addEventListener("mouseover", () => 
-                           { box.style.backgroundColor = "black"; });
+                           { box.style.backgroundColor = shade(box.style.backgroundColor); });
     
       row.appendChild(box);
     }
